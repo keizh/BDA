@@ -1,0 +1,24 @@
+import numpy as np
+from numpy import random
+import matplotlib.pyplot as plt
+import seaborn as sns
+import warnings
+warnings.filterwarnings('ignore')
+
+
+data=np.random.randint(10,10000,100)
+sns.distplot(data,hist=True,bins=25)
+plt.show()
+
+
+from scipy.stats import binom
+data=binom.rvs(n=17,p=0.7,loc=0,size=1010)
+ax=sns.distplot(data,
+color='r',
+hist_kws={"linewidth": 22,'alpha':0.77})
+ax.set(xlabel='Binomial',ylabel='Frequency')
+plt.show()
+
+
+s=np.random.poisson(5, 10000)
+plt.hist(s,16,color='Green')
