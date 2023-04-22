@@ -1,0 +1,20 @@
+import random
+import numpy as np
+population = list(np.random.normal(size=1000))
+sample = random.sample(population,100)
+n = len(sample)
+aplha = 0.05
+x_bar = np.mean(sample)
+mu = np.mean(population)
+sigma = np.std(population)
+z_score = (x_bar - mu)/(sigma/np.sqrt(n))
+print(f"Z score of the sample is : {z_score}")
+
+from scipy.stats import norm
+# Calculate the p-value for a z-score
+p_value = norm.sf(z_score)
+print(f"P value is : {p_value}")
+if p_value < aplha:
+    print("Reject Null Hypothesis")
+else:
+    print("Accept Null Hypothesis")
